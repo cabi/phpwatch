@@ -26,11 +26,21 @@ class Application
 
     /**
      * Run the application.
+     * Result value is for routing.
+     *
+     * @throws \Slim\Exception\MethodNotAllowedException
+     * @throws \Slim\Exception\NotFoundException
+     *
+     * @return bool
      */
-    public function run(): void
+    public function run(): bool
     {
         if (!\defined('APPLICATION_ROOT')) {
             \define('APPLICATION_ROOT', \dirname(__DIR__) . '/');
+        }
+
+        if (\preg_match('/\.(?:png|jpg|jpeg|gif|ico|css|js)$/', $_SERVER['REQUEST_URI'])) {
+            return false;
         }
 
         self::$application = new App();
@@ -45,6 +55,8 @@ class Application
         $applicationRoutes->add(self::$application);
 
         self::$application->run();
+
+        return true;
     }
 
     /**

@@ -82,7 +82,7 @@
       "php-cs-fixer fix --config config/php-cs.php --cache-file config/php_cs.cache"
     ],
     "phpwatch:dev:server": [
-      "php -S localhost:8080 -t web web/index.php"
+      "echo 'Run: php -S localhost:8080 -t web web/index.php'"
     ]
   },
   "scripts-descriptions": {

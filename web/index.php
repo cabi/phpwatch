@@ -12,4 +12,4 @@ foreach ([$base . 'autoload.php',
 }
 
 $loader or die('Composer not found. Do you run `composer install`?');
-(new \PhpWatch\Application())->run();
+return (new \PhpWatch\Application())->run();

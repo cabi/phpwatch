@@ -7,10 +7,10 @@ declare(strict_types=1);
 
 namespace PhpWatch\Cache;
 
-use PhpWatch\Exception;
 use Phpfastcache\CacheManager;
 use Phpfastcache\Config\ConfigurationOption;
 use Phpfastcache\Core\Pool\ExtendedCacheItemPoolInterface;
+use PhpWatch\Exception;
 
 /**
  * GeneralCache.
