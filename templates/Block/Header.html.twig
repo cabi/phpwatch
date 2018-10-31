@@ -1,0 +1,50 @@
+<header>
+	<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+		<div class="container">
+
+			<a class="navbar-brand" href="{{ path_for('home') }}">
+				{{ icon('bug') }}
+				PHP Watch
+			</a>
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavBar"
+			        aria-controls="mainNavBar" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="mainNavBar">
+				<ul class="navbar-nav mr-auto ml-2 mt-2 mt-lg-0">
+					<li class="nav-item">
+						<a class="nav-link{% if is_current_path('home') %} active{% endif %}"
+						   href="{{ path_for('home') }}">
+							Home
+							{% if is_current_path('home') %}
+								<span class="sr-only">(current)</span>
+							{% endif %}
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link{% if is_current_path('page') %} active{% endif %}"
+						   href="{{ path_for('page') }}">
+							Pages
+							{% if is_current_path('page') %}
+								<span class="sr-only">(current)</span>
+							{% endif %}
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link{% if is_current_path('about') %} active{% endif %}"
+						   href="{{ path_for('about') }}">
+							About
+							{% if is_current_path('about') %}
+								<span class="sr-only">(current)</span>
+							{% endif %}
+						</a>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<p class="mt-5 navbar-fixed-top">&nbsp;</p>
+</header>

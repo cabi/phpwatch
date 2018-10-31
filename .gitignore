@@ -1,0 +1,7 @@
+/vendor/
+/config/php_cs.cache
+/.idea/workspace.xml
+/var/
+!/var/.gitkeep
+/data/
+!/data/.gitkeep
