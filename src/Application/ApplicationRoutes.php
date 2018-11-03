@@ -9,6 +9,7 @@ namespace PhpWatch\Application;
 
 use PhpWatch\Controller\CommandController;
 use PhpWatch\Controller\ContentController;
+use PhpWatch\Controller\InstallController;
 use PhpWatch\Controller\PageController;
 use Slim\App;
 
@@ -39,6 +40,9 @@ class ApplicationRoutes extends AbstractApplication
 
         $app->map(['GET', 'POST'], '/page/create.html', PageController::class . ':create')
             ->setName('page/create');
+
+        $app->map(['GET', 'POST'], '/install.html', InstallController::class . ':index')
+            ->setName('install');
 
         // CLI
         $app->options('/ping', CommandController::class . ':ping')

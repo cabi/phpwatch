@@ -1,0 +1,27 @@
+{% extends "Blank.html.twig" %}
+
+{% block title %}Install{% endblock %}
+
+{% block content %}
+
+	<h1>Install</h1>
+
+	<p>
+		There are no users in the current system. Please create the first user entry.
+	</p>
+
+	<form action="{{ path_for('install') }}" method="post">
+		<div class="form-group">
+			<label for="username">E-Mail / Username</label>
+			<input type="text" class="form-control" id="username" name="username" aria-describedby="username" placeholder="Username">
+			<small id="username" class="form-text text-muted">The username should be the E-Mail address of the user</small>
+		</div>
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input type="text" class="form-control" id="password" name="password" aria-describedby="password" placeholder="Password" value="">
+			<small id="password" class="form-text text-muted">Password for the first user</small>
+		</div>
+		<button type="submit" class="btn btn-primary">Create & redirect to home</button>
+	</form>
+
+{% endblock %}

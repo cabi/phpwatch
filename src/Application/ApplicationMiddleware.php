@@ -9,7 +9,7 @@ namespace PhpWatch\Application;
 
 use Adbar\SessionMiddleware;
 use PhpWatch\Middleware\DatabaseMiddleware;
-use PhpWatch\Middleware\StatsMiddleware;
+use PhpWatch\Middleware\InstallMiddleware;
 use PhpWatch\Middleware\UserMiddleware as UserMiddleware;
 use Slim\App;
 
@@ -28,9 +28,8 @@ class ApplicationMiddleware extends AbstractApplication
     public function add(App $app): void
     {
         $app->add(new UserMiddleware($app));
-        $app->add(new DatabaseMiddleware());
         //$app->add(new SessionMiddleware($settings['session']));
-
-        $app->add(new StatsMiddleware());
+        $app->add(new InstallMiddleware());
+        $app->add(new DatabaseMiddleware());
     }
 }
