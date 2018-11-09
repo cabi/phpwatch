@@ -9,15 +9,15 @@
 	<form action="{{ path_for('page/create') }}" method="post">
 		<div class="form-group">
 			<label for="uri">URI</label>
-			<input type="text" class="form-control" id="uri" name="uri" aria-describedby="uri" placeholder="URI">
-			<small id="uri" class="form-text text-muted">URI of the new page element</small>
+			<input type="url" class="form-control" id="uri" name="uri" aria-describedby="uri" placeholder="URI" required="required" autofocus="1">
+			<small id="uri" class="form-text text-muted">URI of the new page element incl. the scheme. E.g. https://www.mywebsite.de/</small>
 		</div>
 		<div class="form-group">
 			<label for="apiKey">API Key</label>
 			<input type="text" class="form-control" id="apiKey" name="apiKey" aria-describedby="apiKey" placeholder="API Key" value="{{ apiKey }}">
 			<small id="apiKey" class="form-text text-muted">API Key for creating external entries</small>
 		</div>
-		<button type="submit" class="btn btn-primary">Create</button>
+		<button type="submit" class="btn btn-primary">Create</button> (<kbd>ctrl + s</kbd>)
 	</form>
 
 {% endblock %}
