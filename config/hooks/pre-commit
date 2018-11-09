@@ -4,6 +4,8 @@ ROOT="./"
 
 echo "php-cs-fixer pre commit hook start"
 
+composer phpwatch:dev:test
+
 composer phpwatch:dev:php-cs-fixer
 git status --porcelain | grep -e '^[AM]\(.*\).php$' | cut -c 3- | while read line; do
     git add "$line";

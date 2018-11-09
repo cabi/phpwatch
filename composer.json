@@ -27,9 +27,18 @@
     "phpfastcache/phpfastcache": "^7.0",
     "guzzlehttp/guzzle": "^6.3"
   },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^2.13",
+    "phpunit/phpunit": "^7"
+  },
   "autoload": {
     "psr-4": {
       "PhpWatch\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "PhpWatchTest\\": "tests/"
     }
   },
   "repositories": [
@@ -71,8 +80,12 @@
     ],
     "phpwatch:dev": [
       "@phpwatch:dev:hooks",
+      "@phpwatch:dev:test",
       "@phpwatch:dev:php-cs-fixer",
       "@phpwatch:dev:server"
+    ],
+    "phpwatch:dev:test": [
+      "phpunit --bootstrap vendor/autoload.php tests/"
     ],
     "phpwatch:dev:hooks": [
       "rm -rf .git/hooks",
@@ -90,11 +103,9 @@
     "phpwatch:clear-cache": "Clear the caches.",
     "phpwatch:update": "Update the current installation to the current git version. Trigger git update, composer install incl. post-install-cmd.",
     "phpwatch:dev": "Start development and execute subscripts in the right order.",
+    "phpwatch:dev:test": "Run all PHPUnit tests.",
     "phpwatch:dev:hooks": "Install development hooks for using git in the right way.",
     "phpwatch:dev:php-cs-fixer": "Execute PHP CS fixer to cleanup the current code.",
     "phpwatch:dev:server": "Start a PHP server on port 8080 so you can use the application with http://localhost:8080/."
-  },
-  "require-dev": {
-    "friendsofphp/php-cs-fixer": "^2.13"
   }
 }
