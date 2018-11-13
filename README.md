@@ -2,8 +2,7 @@
 
 PHP Watch - Self hosting observe/logging solution for small & middle size websites
 
-Installation
--
+## Installation
 
 * Clone the repository
 * Run `composer install`
@@ -12,18 +11,21 @@ Installation
 * *Have fun & send me feedback!*
 
 
-Update
--
+## Update
 
 * Run `composer phpwatch:update`
 * *Have fun & send me feedback!*
 
 
-Development
--
+## Development
 
 * Same as installation
 * Run `composer phpwatch:dev:hooks`
 * Run `composer phpwatch:dev:server`
 * Visit `localhost:8080`
 * *Have fun & send me feedback!*
+
+# Ideas
+
+* https://www.bugsnag.com/
+* Automatisms (SEO, Pingdom, Validator, Accessibility, Behat Tests)
