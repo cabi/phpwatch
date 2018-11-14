@@ -32,7 +32,7 @@ class PageController extends AbstractController
     {
         $pages = DatabaseManager::getQuery()
             ->select('id', 'uri', 'apiKey')
-            ->from('page')
+            ->from('pages')
             ->execute()
             ->fetchAll();
 
@@ -63,7 +63,7 @@ class PageController extends AbstractController
                 'uri' => $params['uri'],
                 'apiKey' => $params['apiKey'],
             ];
-            DatabaseManager::getQuery()->getConnection()->insert('page', $data);
+            DatabaseManager::getQuery()->getConnection()->insert('pages', $data);
 
             return $response->withRedirect($this->container['router']->pathFor('page'), 302);
         }

@@ -4,7 +4,7 @@
 
 {% block content %}
 
-	<h1>Neue Seite</h1>
+	<h1>Neue Seite <a href="{{ path_for('page') }}" class="btn btn-secondary" data-command="escape">back <kbd>ESC</kbd></a></h1>
 
 	<form action="{{ path_for('page/create') }}" method="post">
 		<div class="form-group">
@@ -17,7 +17,7 @@
 			<input type="text" class="form-control" id="apiKey" name="apiKey" aria-describedby="apiKey" placeholder="API Key" value="{{ apiKey }}">
 			<small id="apiKey" class="form-text text-muted">API Key for creating external entries</small>
 		</div>
-		<button type="submit" class="btn btn-primary">Create</button> (<kbd>ctrl + s</kbd>)
+		<button type="submit" class="btn btn-primary" data-command="save">Create <kbd>CTRL + S</kbd></button>
 	</form>
 
 {% endblock %}

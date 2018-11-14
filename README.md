@@ -5,7 +5,7 @@ PHP Watch - Self hosting observe/logging solution for small & middle size websit
 ## Installation
 
 * Clone the repository
-* Run `composer install`
+* Run `composer install --no-dev`
 * Point document root to the `web/` directory
 * Call your domain and follow the instructions
 * *Have fun & send me feedback!*
@@ -19,13 +19,15 @@ PHP Watch - Self hosting observe/logging solution for small & middle size websit
 
 ## Development
 
-* Same as installation
-* Run `composer phpwatch:dev:hooks`
-* Run `composer phpwatch:dev:server`
-* Visit `localhost:8080`
+* Clone the repository
+* Run `composer install`
+* Run `composer phpwatch:dev`
+* Follow instructions
 * *Have fun & send me feedback!*
 
 # Ideas
 
 * https://www.bugsnag.com/
 * Automatisms (SEO, Pingdom, Validator, Accessibility, Behat Tests)
+** Cron automatism
+* Docker Hub image

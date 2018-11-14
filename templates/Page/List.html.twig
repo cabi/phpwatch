@@ -4,7 +4,7 @@
 
 {% block content %}
 
-	<h1>Seiten <a href="{{ path_for('page/create') }}" class="btn btn-primary">Create</a></h1>
+	<h1>Seiten <a href="{{ path_for('page/create') }}" class="btn btn-primary" data-command="new">Create <kbd>CTRL + N</kbd></a></h1>
 
 	{% for page in pages %}
 		<div class="card">
