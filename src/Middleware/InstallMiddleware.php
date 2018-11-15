@@ -8,6 +8,7 @@ declare(strict_types=1);
 namespace PhpWatch\Middleware;
 
 use PhpWatch\Application;
+use PhpWatch\Database\DatabaseManager;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -28,9 +29,9 @@ class InstallMiddleware
      */
     public function __invoke(Request $request, Response $response, callable $next): ResponseInterface
     {
-        if ($this->haveToInstall()) {
-            //return $response->withRedirect(Application::getApplication()
-            //                                   ->getContainer()['router']->pathFor('install'), 302);
+        if ($this->redirectInstall()) {
+            return $response->withRedirect(Application::getApplication()
+                ->getContainer()['router']->pathFor('install'), 302);
         }
 
         return $next($request, $response);
@@ -39,8 +40,20 @@ class InstallMiddleware
     /**
      * Check if the installation have to install.
      */
-    protected function haveToInstall(): bool
+    protected function redirectInstall(): bool
     {
-        return true;
+        try {
+            DatabaseManager::getQuery()
+                ->select('*')
+                ->from('users')
+                ->setMaxResults(1)
+                ->execute()
+                ->fetchAll();
+
+            return false;
+        } catch (\Exception $exception) {
+        }
+
+        return false === \mb_strpos($_SERVER['REQUEST_URI'], 'install.');
     }
 }

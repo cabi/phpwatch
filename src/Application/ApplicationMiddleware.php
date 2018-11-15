@@ -28,7 +28,23 @@ class ApplicationMiddleware extends AbstractApplication
     public function add(App $app): void
     {
         $app->add(new UserMiddleware($app));
-        //$app->add(new SessionMiddleware($settings['session']));
+
+        $sessionSettings = [
+            'name' => 'slim_session',
+            'lifetime' => 24,
+            'path' => '/',
+            'domain' => null,
+            'secure' => false,
+            'httponly' => true,
+            'cookie_autoset' => true,
+            'save_path' => null,
+            'cache_limiter' => 'nocache',
+            'autorefresh' => false,
+            'encryption_key' => null,
+            'namespace' => 'phpwatch',
+        ];
+
+        $app->add(new SessionMiddleware($sessionSettings));
         $app->add(new InstallMiddleware());
         $app->add(new DatabaseMiddleware());
     }

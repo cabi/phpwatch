@@ -29,7 +29,7 @@ class DatabaseMiddleware
      */
     public function __invoke(Request $request, Response $response, callable $next): Response
     {
-        DatabaseManager::getInstance();
+        DatabaseManager::getInstance()->getConnection()->connect();
         $response = $next($request, $response);
 
         return $response;

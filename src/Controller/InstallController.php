@@ -34,18 +34,15 @@ class InstallController extends AbstractController
             $params = $request->getParams();
 
             $data = [
-                'username' => $params['username'],
-                'password' => $params['password'],
+                'email' => $params['email'],
+                'password' => \md5($params['password']),
             ];
 
-            DatabaseManager::getQuery()->getConnection()->insert('user', $data);
+            DatabaseManager::getQuery()->getConnection()->insert('users', $data);
 
             return $response->withRedirect($this->container['router']->pathFor('root'), 302);
         }
 
-        $variables = [
-        ];
-
-        return $this->render($request, $response, __METHOD__, $variables);
+        return $this->render($request, $response, __METHOD__, []);
     }
 }

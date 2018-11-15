@@ -32,7 +32,7 @@ class ApplicationContainer extends AbstractApplication
         $container['logger'] = new Logger();
 
         $container['session'] = function (ContainerInterface $container) {
-            return new Session($container->get('settings')['session']['namespace']);
+            return new Session('phpwatch');
         };
 
         $container['view'] = function (ContainerInterface $container) {
