@@ -7,6 +7,8 @@ declare(strict_types=1);
 
 namespace PhpWatch\Controller;
 
+use PhpWatch\Exception\OnlyUserException;
+use PhpWatch\Exception\OnlyVisitorException;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Request;
@@ -97,7 +99,7 @@ abstract class AbstractController
      */
     protected function onlyUsers(Request $request)
     {
-        if (!$request->getAttribute('currentUser')) {
+        if (false === $request->getAttribute('currentUser')) {
             throw new OnlyUserException();
         }
     }
@@ -111,7 +113,7 @@ abstract class AbstractController
      */
     protected function onlyVisitor(Request $request)
     {
-        if ($request->getAttribute('currentUser')) {
+        if (false !== $request->getAttribute('currentUser')) {
             throw new OnlyVisitorException();
         }
     }

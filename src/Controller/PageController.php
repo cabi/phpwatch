@@ -30,6 +30,8 @@ class PageController extends AbstractController
      */
     public function list(Request $request, Response $response, array $args): ResponseInterface
     {
+        $this->onlyUsers($request);
+
         $pages = DatabaseManager::getQuery()
             ->select('id', 'uri', 'apiKey')
             ->from('pages')
@@ -56,6 +58,8 @@ class PageController extends AbstractController
      */
     public function create(Request $request, Response $response, array $args): ResponseInterface
     {
+        $this->onlyUsers($request);
+
         if ($request->isPost()) {
             $params = $request->getParams();
 

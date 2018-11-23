@@ -9,6 +9,7 @@ namespace PhpWatch\Middleware;
 
 use PhpWatch\Application;
 use PhpWatch\Database\DatabaseManager;
+use PhpWatch\Exception;
 use PhpWatch\Exception\OnlyUserException;
 use PhpWatch\Exception\OnlyVisitorException;
 use Psr\Http\Message\ResponseInterface;
@@ -53,12 +54,21 @@ class UserMiddleware
         $session = $this->app->getContainer()['session'];
         $userId = (int) $session->get('userId');
 
-        //$userId = 1;
-
         try {
-            throw new \Exception('Implement!!!');
-            //$user = DatabaseManager::getInstance()->getConnection();
-            //$request = $request->withAttribute('currentUser', $user);
+            $query = DatabaseManager::getQuery();
+            $user = $query
+                ->select('*')
+                ->from('users')
+                ->where($query->expr()->eq('id', $userId))
+                ->setMaxResults(1)
+                ->execute()
+                ->fetch();
+
+            if (!isset($user['email'])) {
+                throw new Exception('invalid user', 123789);
+            }
+
+            $request = $request->withAttribute('currentUser', $user);
         } catch (\Exception $ex) {
             $request = $request->withAttribute('currentUser', false);
         }
@@ -66,7 +76,7 @@ class UserMiddleware
         try {
             $response = $next($request, $response);
         } catch (OnlyUserException $ex) {
-            return $response->withRedirect(Application::getApplication()->getContainer()['router']->pathFor('user/login'), 302);
+            return $response->withRedirect(Application::getApplication()->getContainer()['router']->pathFor('login'), 302);
         } catch (OnlyVisitorException $ex) {
             return $response->withRedirect(Application::getApplication()->getContainer()['router']->pathFor('root'), 302);
         }
