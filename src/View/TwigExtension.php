@@ -10,6 +10,7 @@ namespace PhpWatch\View;
 use Comsolit\HTMLBuilder\HTMLBuilder;
 use GuzzleHttp\Client;
 use PhpWatch\Cache\GeneralCache;
+use PhpWatch\Time\TimeService;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
@@ -94,15 +95,15 @@ class TwigExtension extends AbstractExtension
                 return '';
         }
 
-        //$builder->addAttribute('crossorigin', 'anonymous');
+        $builder->addAttribute('crossorigin', 'anonymous');
         if (!$this->isLocalResource($resource)) {
             $cache = new GeneralCache();
             $integrity = $cache->cache('sri_' . \md5($resource), function () use ($resource) {
                 $content = $this->getContent($resource);
 
                 return $this->hashResource($content);
-            }, 60 * 60 * 24 * 30);
-            //$builder->addAttribute('integrity', $integrity);
+            }, TimeService::DAY * 30);
+            $builder->addAttribute('integrity', $integrity);
         }
 
         return $builder->build();
@@ -147,6 +148,6 @@ class TwigExtension extends AbstractExtension
      */
     protected function hashResource(string $content): string
     {
-        return \base64_encode(\hash('sha256', $content, true));
+        return \base64_encode(\hash('sha384', $content, true));
     }
 }

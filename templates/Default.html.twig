@@ -1,27 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-{% htmlcompress %}
-<head>
+<head>{% htmlcompress %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}{% endblock %} - PHP Watch</title>
 	{{ 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'|resource }}
 	{{ 'https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css'|resource }}
 	{{ '/css/app.css'|resource }}
-</head>
-{% endhtmlcompress %}
-<body>
-    {% htmlcompress %}
-    {% include 'Block/Header.html.twig' %}
-    {% endhtmlcompress %}
+{% endhtmlcompress %}</head>
+<body>{% htmlcompress %}{% include 'Block/Header.html.twig' %}{% endhtmlcompress %}
 
     <div class="container">
         {% block content %}{% endblock %}
     </div>
 
-    {% htmlcompress %}
-    {% include 'Block/Footer.html.twig' %}
-    {% endhtmlcompress %}
+    {% htmlcompress %}{% include 'Block/Footer.html.twig' %}{% endhtmlcompress %}
 
 {{ 'https://code.jquery.com/jquery-3.3.1.slim.min.js'|resource }}
 {{ 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'|resource }}

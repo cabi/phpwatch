@@ -23,7 +23,7 @@ class Twig extends \Slim\Views\Twig
      */
     public function __construct(string $path = APPLICATION_ROOT . 'templates/', array $settings = [])
     {
-        $isProduction = false;
+        $isProduction = true;
         $config = [
             'cache' => $isProduction ? APPLICATION_ROOT . 'var/tmp/view/' : false,
             'strict_variables' => true,
