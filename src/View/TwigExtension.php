@@ -148,6 +148,6 @@ class TwigExtension extends AbstractExtension
      */
     protected function hashResource(string $content): string
     {
-        return \base64_encode(\hash('sha384', $content, true));
+        return 'sha384-' . \base64_encode(\hash('sha384', $content, true));
     }
 }

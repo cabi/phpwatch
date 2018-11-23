@@ -10,6 +10,7 @@ namespace PhpWatch\Application;
 use PhpWatch\Controller\CommandController;
 use PhpWatch\Controller\ContentController;
 use PhpWatch\Controller\InstallController;
+use PhpWatch\Controller\LogController;
 use PhpWatch\Controller\PageController;
 use PhpWatch\Controller\UserController;
 use Slim\App;
@@ -50,6 +51,9 @@ class ApplicationRoutes extends AbstractApplication
 
         $app->map(['GET'], '/logout.html', UserController::class . ':logout')
             ->setName('logout');
+
+        $app->map(['GET'], '/log/data.json', LogController::class . ':data')
+            ->setName('log/data');
 
         // CLI
         $app->options('/ping', CommandController::class . ':ping')
