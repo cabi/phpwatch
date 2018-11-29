@@ -31,3 +31,4 @@ PHP Watch - Self hosting observe/logging solution for small & middle size websit
 * Automatisms (SEO, Pingdom, Validator, Accessibility, Behat Tests)
 ** Cron automatism
 * Docker Hub image
+* https://eventbrite.github.io/britecharts/tutorial-stacked-bar.html

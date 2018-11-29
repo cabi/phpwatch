@@ -29,6 +29,8 @@ class ContentController extends AbstractController
      */
     public function home(Request $request, Response $response, array $args): ResponseInterface
     {
+        $this->onlyUsers($request);
+
         return $this->render($request, $response, __METHOD__);
     }
 

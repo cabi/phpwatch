@@ -1,4 +1,4 @@
-name: Observe
+name: PHP Watch
 migrations_namespace: PhpWatch\Database\Migration
 table_name: doctrine_migration_versions
 migrations_directory: src/Database/Migration/

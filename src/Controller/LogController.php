@@ -25,13 +25,14 @@ class LogController extends AbstractController
     {
         $this->onlyUsers($request);
 
-        $data = [
-            ['name' => 'Rob', 'age' => 40],
-            ['name' => 'Rob', 'age' => 40],
-            ['name' => 'Rob', 'age' => 40],
-            ['name' => 'Rob', 'age' => 40],
-            ['name' => 'Rob', 'age' => 40],
-        ];
+        $data = [];
+
+        for ($i = 1; $i <= 24; ++$i) {
+            $data[] = [
+                'name' => $i,
+                'value' => \rand(0, 100) / 100,
+            ];
+        }
 
         $response = $response->withHeader('Cache-Control', 'must-revalidate,no-cache');
 
