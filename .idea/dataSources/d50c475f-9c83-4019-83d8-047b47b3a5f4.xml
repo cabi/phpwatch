@@ -29,7 +29,6 @@
     <index id="13" parent="6" name="sqlite_autoindex_doctrine_migration_versions_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>version</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <key id="14" parent="6">
@@ -65,7 +64,6 @@
     </column>
     <index id="20" parent="7" name="IDX_F08FC65C140AB620">
       <ColNames>page</ColNames>
-      <ColumnCollations></ColumnCollations>
     </index>
     <key id="21" parent="7">
       <ColNames>id</ColNames>

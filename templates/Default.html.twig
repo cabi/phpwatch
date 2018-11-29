@@ -4,10 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}{% endblock %} - PHP Watch</title>
-	{{ 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'|resource }}
-	{{ 'https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css'|resource }}
-	{{ 'https://cdnjs.cloudflare.com/ajax/libs/britecharts/3.0.0/css/britecharts.min.css'|resource }}
-	{{ '/css/app.css'|resource }}
+	{% include 'Block/HtmlCss.html.twig' %}
 {% endhtmlcompress %}</head>
 <body>{% htmlcompress %}{% include 'Block/Header.html.twig' %}{% endhtmlcompress %}
 
@@ -17,11 +14,6 @@
 
     {% htmlcompress %}{% include 'Block/Footer.html.twig' %}{% endhtmlcompress %}
 
-{{ 'https://code.jquery.com/jquery-3.3.1.slim.min.js'|resource }}
-{{ 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'|resource }}
-{{ 'https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js'|resource }}
-{{ 'https://cdnjs.cloudflare.com/ajax/libs/britecharts/3.0.0/bundled/britecharts.min.js'|resource }}
-{{ 'https://cdnjs.cloudflare.com/ajax/libs/britecharts/3.0.0/umd/bar.min.js'|resource }}
-{{ '/js/app.js'|resource }}
+	{% include 'Block/HtmlJs.html.twig' %}
 </body>
 </html>

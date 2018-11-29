@@ -27,10 +27,30 @@ class LogController extends AbstractController
 
         $data = [];
 
-        for ($i = 1; $i <= 24; ++$i) {
+        $end = 10;
+        if (isset($args['area']) && '24h' === $args['area']) {
+            $end = 24;
+        }
+
+        if (isset($args['area']) && '30d' === $args['area']) {
+            $end = 30;
+        }
+
+        for ($i = 1; $i <= $end; ++$i) {
             $data[] = [
-                'name' => $i,
-                'value' => \rand(0, 100) / 100,
+                'name' => (string) $i,
+                'stack' => 'Stacky' . \rand(0, 2),
+                'value' => \rand(0, 100),
+            ];
+            $data[] = [
+                'name' => (string) $i,
+                'stack' => 'Stacky' . \rand(0, 2),
+                'value' => \rand(0, 100),
+            ];
+            $data[] = [
+                'name' => (string) $i,
+                'stack' => 'Stacky' . \rand(0, 2),
+                'value' => \rand(0, 100),
             ];
         }
 

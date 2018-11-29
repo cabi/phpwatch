@@ -52,7 +52,7 @@ class ApplicationRoutes extends AbstractApplication
         $app->map(['GET'], '/logout.html', UserController::class . ':logout')
             ->setName('logout');
 
-        $app->map(['GET'], '/log/data.json', LogController::class . ':data')
+        $app->map(['GET'], '/log/data[/{area}]', LogController::class . ':data')
             ->setName('log/data');
 
         // CLI
