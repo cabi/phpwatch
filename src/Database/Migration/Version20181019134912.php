@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Version20181019134912.
+ */
+
 declare(strict_types=1);
 
 namespace PhpWatch\Database\Migration;
@@ -7,9 +11,14 @@ namespace PhpWatch\Database\Migration;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
+/**
+ * Version20181019134912.
+ */
 final class Version20181019134912 extends AbstractMigration
 {
     /**
+     * Up.
+     *
      * @param Schema $schema
      */
     public function up(Schema $schema): void
@@ -34,6 +43,8 @@ final class Version20181019134912 extends AbstractMigration
     }
 
     /**
+     * Down.
+     *
      * @param Schema $schema
      */
     public function down(Schema $schema): void

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * LogController.
+ */
+
 declare(strict_types=1);
 
 namespace PhpWatch\Controller;
@@ -8,10 +12,13 @@ use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
+/**
+ * LogController.
+ */
 class LogController extends AbstractController
 {
     /**
-     * Home page.
+     * Log data.
      *
      * @param Request  $request
      * @param Response $response

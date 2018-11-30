@@ -3,6 +3,7 @@
 /**
  * Application Container.
  */
+
 declare(strict_types=1);
 
 namespace PhpWatch\Application;
@@ -22,8 +23,7 @@ class ApplicationContainer extends AbstractApplication
     /**
      * Add the application container.
      *
-     * @param App   $app
-     * @param array $settings
+     * @param App $app
      */
     public function add(App $app): void
     {

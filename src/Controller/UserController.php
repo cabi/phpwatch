@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * UserController.
+ */
+
 declare(strict_types=1);
 
 namespace PhpWatch\Controller;
@@ -18,7 +22,7 @@ use Slim\Http\Response;
 class UserController extends AbstractController
 {
     /**
-     * Home page.
+     * Login.
      *
      * @param Request  $request
      * @param Response $response
@@ -63,6 +67,8 @@ class UserController extends AbstractController
     }
 
     /**
+     * Logout.
+     *
      * @param Request  $request
      * @param Response $response
      * @param array    $args

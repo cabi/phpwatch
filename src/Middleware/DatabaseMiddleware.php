@@ -3,6 +3,7 @@
 /**
  * DatabaseMiddleware.
  */
+
 declare(strict_types=1);
 
 namespace PhpWatch\Middleware;
@@ -24,6 +25,8 @@ class DatabaseMiddleware
      * @param Request  $request  PSR7 request
      * @param Response $response PSR7 response
      * @param callable $next     Next middleware
+     *
+     * @throws \Doctrine\DBAL\DBALException
      *
      * @return Response
      */

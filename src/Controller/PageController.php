@@ -3,6 +3,7 @@
 /**
  * PageController.
  */
+
 declare(strict_types=1);
 
 namespace PhpWatch\Controller;
@@ -18,7 +19,7 @@ use Slim\Http\Response;
 class PageController extends AbstractController
 {
     /**
-     * Home page.
+     * List.
      *
      * @param Request  $request
      * @param Response $response

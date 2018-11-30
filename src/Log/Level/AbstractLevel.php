@@ -1,9 +1,16 @@
 <?php
 
+/**
+ * AbstractLevel.
+ */
+
 declare(strict_types=1);
 
 namespace PhpWatch\Log\Level;
 
+/**
+ * AbstractLevel.
+ */
 abstract class AbstractLevel
 {
     /**

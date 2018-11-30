@@ -3,6 +3,7 @@
 /**
  * Application Middleware.
  */
+
 declare(strict_types=1);
 
 namespace PhpWatch\Application;
@@ -22,8 +23,7 @@ class ApplicationMiddleware extends AbstractApplication
      * Add all middle wares.
      * From inner to outer.
      *
-     * @param App   $app
-     * @param array $settings
+     * @param App $app
      */
     public function add(App $app): void
     {

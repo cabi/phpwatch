@@ -3,6 +3,7 @@
 /**
  * ApplicationRoutes.
  */
+
 declare(strict_types=1);
 
 namespace PhpWatch\Application;
@@ -23,8 +24,7 @@ class ApplicationRoutes extends AbstractApplication
     /**
      * Add the application routes.
      *
-     * @param App   $app
-     * @param array $settings
+     * @param App $app
      */
     public function add(App $app): void
     {

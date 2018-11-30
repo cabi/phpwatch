@@ -73,7 +73,8 @@
       "doctrine-migrations migrations:migrate --no-interaction --configuration config/migration.yml --db-configuration config/migration-config.php"
     ],
     "phpwatch:clear-cache": [
-      "rm -rf ./var/tmp/"
+      "rm -rf ./var/tmp/",
+      "rm -rf ./var/phpdoc/"
     ],
     "phpwatch:update": [
       "git pull",
@@ -97,6 +98,9 @@
     ],
     "phpwatch:dev:server": [
       "echo 'Run: php -S localhost:8087 -t web web/index.php'"
+    ],
+    "phpwatch:dev:phpdoc": [
+      "docker run --rm -v $(pwd):/data phpdoc/phpdoc -d src -t var/phpdoc"
     ]
   },
   "scripts-descriptions": {
@@ -107,6 +111,7 @@
     "phpwatch:dev:test": "Run all PHPUnit tests.",
     "phpwatch:dev:hooks": "Install development hooks for using git in the right way.",
     "phpwatch:dev:php-cs-fixer": "Execute PHP CS fixer to cleanup the current code.",
-    "phpwatch:dev:server": "Start a PHP server on port 8087 so you can use the application with http://localhost:8087/."
+    "phpwatch:dev:server": "Start a PHP server on port 8087 so you can use the application with http://localhost:8087/.",
+    "phpwatch:dev:phpdoc": "Generate PHPdoc files via docker"
   }
 }

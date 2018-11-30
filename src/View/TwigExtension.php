@@ -3,6 +3,7 @@
 /**
  * TwigExtension.
  */
+
 declare(strict_types=1);
 
 namespace PhpWatch\View;
@@ -43,6 +44,8 @@ class TwigExtension extends AbstractExtension
     }
 
     /**
+     * Get filters.
+     *
      * @return array|\Twig_Filter[]
      */
     public function getFilters()
@@ -127,6 +130,8 @@ class TwigExtension extends AbstractExtension
      * Get file content.
      *
      * @param string $resource
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return string
      */

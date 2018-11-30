@@ -28,6 +28,8 @@ class DatabaseManager
 
     /**
      * Database constructor.
+     *
+     * @throws \Doctrine\DBAL\DBALException
      */
     protected function __construct()
     {
@@ -36,6 +38,8 @@ class DatabaseManager
     }
 
     /**
+     * Get connection.
+     *
      * @return \Doctrine\DBAL\Connection
      */
     public function getConnection(): \Doctrine\DBAL\Connection
@@ -44,6 +48,10 @@ class DatabaseManager
     }
 
     /**
+     * Get Query object.
+     *
+     * @throws \Doctrine\DBAL\DBALException
+     *
      * @return \Doctrine\DBAL\Query\QueryBuilder
      */
     public static function getQuery(): \Doctrine\DBAL\Query\QueryBuilder
@@ -51,9 +59,13 @@ class DatabaseManager
         return self::getInstance()->getConnection()->createQueryBuilder();
     }
 
+    /**
+     * Get connection params.
+     *
+     * @return array
+     */
     public function getConnectionParams(): array
     {
-        // sqlite
         return [
             'dbname' => 'sqlite3',
             'path' => APPLICATION_ROOT . 'data/data.sqlite',
@@ -63,6 +75,8 @@ class DatabaseManager
 
     /**
      * Build database.
+     *
+     * @throws \Doctrine\DBAL\DBALException
      *
      * @return DatabaseManager
      */

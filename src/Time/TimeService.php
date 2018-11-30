@@ -1,9 +1,16 @@
 <?php
 
+/**
+ * TimeService.
+ */
+
 declare(strict_types=1);
 
 namespace PhpWatch\Time;
 
+/**
+ * TimeService.
+ */
 class TimeService
 {
     public const SECOND = 1;

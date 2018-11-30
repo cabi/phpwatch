@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Bootstrap.
+ */
+
 declare(strict_types=1);
 
 namespace PhpWatch\Log\Level;
