@@ -51,11 +51,6 @@
         "dist": {
           "url": "https://github.com/jonnyreeves/js-logger/archive/1.5.0.zip",
           "type": "zip"
-        },
-        "source": {
-          "url": "http://smarty-php.googlecode.com/svn/",
-          "type": "svn",
-          "reference": "tags/Smarty_3_1_7/distribution/"
         }
       }
     }

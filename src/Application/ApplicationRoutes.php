@@ -60,8 +60,21 @@ class ApplicationRoutes extends AbstractApplication
         $app->map(['GET'], '/logout.html', UserController::class . ':logout')
             ->setName('logout');
 
-        $app->map(['GET'], '/log/data[/{area}]', LogController::class . ':data')
-            ->setName('log/data');
+        $app->group('/log', function () use ($app) {
+            // @todo Handle CRUD via WEB and Service
+            // List
+            $app->get('.html', PageController::class . ':list')
+                ->setName('page/list');
+
+            $app->map(['GET'], '/data[/{area}]', LogController::class . ':data')
+                ->setName('log/data');
+
+            $app->map(['GET', 'POST', 'PUT'], '/create.html', LogController::class . ':create')
+                ->setName('log/create');
+        });
+
+        $app->get('/log/frontendHandler.html', LogController::class . ':frontendHandler')
+            ->setName('log/frontendHandler');
 
         // CLI
         $app->options('/ping', CommandController::class . ':ping')

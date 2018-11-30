@@ -31,26 +31,8 @@ $(function () {
         var dataUri = $(item).attr('data-chart-uri');
         buildBarChart(id, dataUri);
     });
-
-    console.log('Weiter?');
 });
 
-
-window.addEventListener('error', function (e) {
-    var stack = e.error.stack;
-    var message = e.error.toString();
-
-    if (stack) {
-        message += '\n' + stack;
-    }
-
-    console.log(message);
-
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/index.php/log/create', true);
-    // Fire an Ajax request with error details
-    xhr.send(message);
-}, false);
 
 function buildBarChart(selectorId, dataUri) {
     var barContainer = d3.select('#' + selectorId);
@@ -58,7 +40,7 @@ function buildBarChart(selectorId, dataUri) {
     stackedBar
         .width(1110)
         .height(400)
-        .test()
+     //    .test()
         .grid('horizontal');
     // .isAnimated(true);
 

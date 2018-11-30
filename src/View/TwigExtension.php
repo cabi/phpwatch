@@ -85,6 +85,7 @@ class TwigExtension extends AbstractExtension
         $pathInfo = \pathinfo($resource);
         switch (\mb_strtolower($pathInfo['extension'])) {
             case 'js':
+            case 'html': // @todo change route to local JS to js
                 $builder = new HTMLBuilder('script');
                 $builder->addAttribute('src', $resource);
                 break;
