@@ -37,11 +37,19 @@ class ApplicationRoutes extends AbstractApplication
         $app->get('/about.html', ContentController::class . ':about')
             ->setName('about');
 
-        $app->get('/page.html', PageController::class . ':list')
-            ->setName('page');
+        $app->group('/page', function () use ($app) {
+            // @todo Handle CRUD via WEB and Service
+            // List
+            $app->get('.html', PageController::class . ':list')
+                ->setName('page/list');
 
-        $app->map(['GET', 'POST'], '/page/create.html', PageController::class . ':create')
-            ->setName('page/create');
+            $app->map(['GET', 'POST', 'PUT'], '/create.html', PageController::class . ':create')
+                ->setName('page/create');
+
+            // Delete
+            $app->delete('/(:id).html', PageController::class . ':delete')
+                ->setName('page/delete');
+        });
 
         $app->map(['GET', 'POST'], '/install.html', InstallController::class . ':index')
             ->setName('install');

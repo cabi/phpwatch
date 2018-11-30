@@ -4,7 +4,7 @@
 
 {% block content %}
 
-	<h1>Neue Seite <a href="{{ path_for('page') }}" class="btn btn-secondary" data-command="escape">back <kbd>ESC</kbd></a></h1>
+	<h1>Neue Seite <a href="{{ path_for('page/list') }}" class="btn btn-secondary" data-command="escape">back <kbd>ESC</kbd></a></h1>
 
 	<form action="{{ path_for('page/create') }}" method="post">
 		<div class="form-group">

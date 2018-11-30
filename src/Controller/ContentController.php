@@ -47,6 +47,8 @@ class ContentController extends AbstractController
      */
     public function about(Request $request, Response $response, array $args): ResponseInterface
     {
+        $this->onlyUsers($request);
+
         return $this->render($request, $response, __METHOD__);
     }
 
@@ -57,10 +59,14 @@ class ContentController extends AbstractController
      * @param Response $response
      * @param array    $args
      *
+     * @throws \PhpWatch\Exception\OnlyUserException
+     *
      * @return ResponseInterface
      */
     public function root(Request $request, Response $response, array $args): ResponseInterface
     {
+        $this->onlyUsers($request);
+
         return $response->withHeader('Location', $this->container['router']->pathFor('home'));
     }
 }

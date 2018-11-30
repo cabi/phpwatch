@@ -4,13 +4,19 @@
 
 {% block content %}
 
-	<h1>Last 10 minutes</h1>
-	<div class="chart" id="chart10minutes" data-chart-uri="{{ path_for('log/data',  { 'area': '10m' }) }}"></div>
+	<h1>Short term</h1>
+	<figure class="figure chart" id="chart10minutes" data-chart-uri="{{ path_for('log/data',  { 'area': '10m' }) }}">
+      <figcaption class="figure-caption">Log entries of the last 10 minutes.</figcaption>
+    </figure>
 
-	<h1>Last 24 hours</h1>
-	<div class="chart" id="chart24hours" data-chart-uri="{{ path_for('log/data',  { 'area': '24h' }) }}"></div>
+	<h1>Medium term</h1>
+	<figure class="figure chart" id="chart24hours" data-chart-uri="{{ path_for('log/data',  { 'area': '24h' }) }}">
+      <figcaption class="figure-caption">Log entries of the last 24 hours.</figcaption>
+    </figure>
 
-	<h1>Last 30 days</h1>
-	<div class="chart" id="chart30days" data-chart-uri="{{ path_for('log/data',  { 'area': '30d' }) }}"></div>
+	<h1>Long term</h1>
+	<figure class="figure chart" id="chart30days" data-chart-uri="{{ path_for('log/data',  { 'area': '30d' }) }}">
+      <figcaption class="figure-caption">Log entries of the last 30 days.</figcaption>
+    </figure>
 
 {% endblock %}
