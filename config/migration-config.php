@@ -7,8 +7,9 @@ if (!\defined('APPLICATION_ROOT')) {
 }
 require APPLICATION_ROOT . 'vendor/autoload.php';
 
-if (\is_dir(APPLICATION_ROOT . 'data')) {
-    \mkdir(APPLICATION_ROOT . 'data');
+$dataDir = APPLICATION_ROOT . 'data';
+if (!\is_dir($dataDir)) {
+    \mkdir($dataDir);
 }
 
 return \PhpWatch\Database\DatabaseManager::getInstance()
