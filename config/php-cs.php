@@ -6,11 +6,11 @@ require __DIR__ . '/../vendor/autoload.php';
 
 return PhpCsFixer\Config::create()
     ->setRiskyAllowed(true)
-    ->setFinder(
-        PhpCsFixer\Finder::create()
-            ->in(__DIR__ . '/../src')
-            ->in(__DIR__ . '/../tests')
-    )
+    ->setFinder(PhpCsFixer\Finder::create()
+        ->in(__DIR__ . '/../src')
+        ->in(__DIR__ . '/../tests')
+        ->in(__DIR__ . '/../config')
+        ->in(__DIR__ . '/../web'))
     ->setRules([
         '@PSR2' => true,
         '@Symfony' => true,
