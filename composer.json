@@ -65,7 +65,7 @@
       "@phpwatch:migrate-db"
     ],
     "phpwatch:migrate-db": [
-      "doctrine-migrations migrations:migrate --no-interaction --configuration config/migration.yml --db-configuration config/migration-config.php"
+      "@php ./vendor/bin/doctrine-migrations migrations:migrate --no-interaction --configuration config/migration.yml --db-configuration config/migration-config.php"
     ],
     "phpwatch:clear-cache": [
       "rm -rf ./var/tmp/",
@@ -82,14 +82,14 @@
       "@phpwatch:dev:server"
     ],
     "phpwatch:dev:test": [
-      "phpunit --bootstrap vendor/autoload.php tests/"
+      "@php ./vendor/bin/phpunit --bootstrap vendor/autoload.php tests/"
     ],
     "phpwatch:dev:hooks": [
       "rm -rf .git/hooks",
       "ln -s ../config/hooks .git/hooks"
     ],
     "phpwatch:dev:php-cs-fixer": [
-      "php-cs-fixer fix --config config/php-cs.php --cache-file config/php_cs.cache"
+      "@php ./vendor/bin/php-cs-fixer fix --config config/php-cs.php --cache-file config/php_cs.cache"
     ],
     "phpwatch:dev:server": [
       "echo 'Run: php -S localhost:8087 -t web web/index.php'"
