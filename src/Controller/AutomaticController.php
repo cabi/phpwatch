@@ -1,22 +1,23 @@
 <?php
 
 /**
- * PageController.
+ * AutomaticController.
  */
 
 declare(strict_types=1);
 
 namespace PhpWatch\Controller;
 
+use Cron\CronExpression;
 use PhpWatch\Database\DatabaseManager;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
 /**
- * PageController.
+ * AutomaticController.
  */
-class PageController extends AbstractController
+class AutomaticController extends AbstractController
 {
     /**
      * List.
@@ -33,14 +34,19 @@ class PageController extends AbstractController
     {
         $this->onlyUsers($request);
 
-        $pages = DatabaseManager::getQuery()
-            ->select('id', 'uri', 'apiKey')
-            ->from('pages')
+        // @todo impleemnt
+
+        $automatics = DatabaseManager::getQuery()
+            ->select('*')
+            ->from('automatic')
             ->execute()
             ->fetchAll();
 
+        // CronExpression::isValidExpression($expression);
+        // CronExpression::factory($expression);
+
         $variables = [
-            'pages' => $pages,
+            'automatics' => $automatics,
         ];
 
         return $this->render($request, $response, __METHOD__, $variables);
@@ -65,40 +71,18 @@ class PageController extends AbstractController
             $params = $request->getParams();
 
             $data = [
-                'uri' => $params['uri'],
-                'apiKey' => $params['apiKey'],
+                'nextRun' => new \DateTime(),
+                'expression' => $params['expression'],
+                'lockRun' => false,
+                'implementation' => $params['implementation'],
             ];
             DatabaseManager::getQuery()
                 ->getConnection()
-                ->insert('pages', $data);
+                ->insert('automatic', $data);
 
-            return $response->withRedirect($this->container['router']->pathFor('page/list'), 302);
+            return $response->withRedirect($this->container['router']->pathFor('automatic/list'), 302);
         }
 
-        return $this->render($request, $response, __METHOD__, ['apiKey' => \md5((string) \microtime(true))]);
-    }
-
-    /**
-     * Delete action.
-     *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     *
-     * @throws \Exception
-     *
-     * @return ResponseInterface
-     */
-    public function delete(Request $request, Response $response, array $args): ResponseInterface
-    {
-        $this->onlyUsers($request);
-
-        $id = (int) $args['id'];
-
-        DatabaseManager::getQuery()
-            ->getConnection()
-            ->delete('pages', ['id' => $id]);
-
-        return $response->withRedirect($this->container['router']->pathFor('page/list'), 302);
+        return $this->render($request, $response, __METHOD__);
     }
 }

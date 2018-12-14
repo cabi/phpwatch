@@ -29,9 +29,9 @@ class InstallMiddleware
      */
     public function __invoke(Request $request, Response $response, callable $next): ResponseInterface
     {
-        if ($this->redirectInstall()) {
+        if ($this->redirectInstall() && $request->isGet()) {
             return $response->withRedirect(Application::getApplication()
-                ->getContainer()['router']->pathFor('install'), 302);
+                                               ->getContainer()['router']->pathFor('install'), 302);
         }
 
         return $next($request, $response);
@@ -43,14 +43,16 @@ class InstallMiddleware
     protected function redirectInstall(): bool
     {
         try {
-            DatabaseManager::getQuery()
+            $user = DatabaseManager::getQuery()
                 ->select('*')
                 ->from('users')
                 ->setMaxResults(1)
                 ->execute()
                 ->fetchAll();
 
-            return false;
+            if (!empty($user)) {
+                return false;
+            }
         } catch (\Exception $exception) {
         }
 

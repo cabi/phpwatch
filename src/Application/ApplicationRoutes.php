@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace PhpWatch\Application;
 
+use PhpWatch\Controller\AutomaticController;
 use PhpWatch\Controller\CommandController;
 use PhpWatch\Controller\ContentController;
 use PhpWatch\Controller\InstallController;
@@ -47,8 +48,21 @@ class ApplicationRoutes extends AbstractApplication
                 ->setName('page/create');
 
             // Delete
-            $app->delete('/(:id).html', PageController::class . ':delete')
+            $app->map(['GET', 'DELETE'], '/{id}.html', PageController::class . ':delete')
                 ->setName('page/delete');
+        });
+        $app->group('/automatic', function () use ($app) {
+            // @todo Handle CRUD via WEB and Service
+            // List
+            $app->get('.html', AutomaticController::class . ':list')
+                ->setName('automatic/list');
+
+            $app->map(['GET', 'POST', 'PUT'], '/create.html', AutomaticController::class . ':create')
+                ->setName('automatic/create');
+
+            // Delete
+            $app->map(['GET', 'DELETE'], '/{id}.html', AutomaticController::class . ':delete')
+                ->setName('automatic/delete');
         });
 
         $app->map(['GET', 'POST'], '/install.html', InstallController::class . ':index')
