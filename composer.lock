@@ -749,7 +749,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://github.com/jonnyreeves/js-logger/archive/1.5.0.zip",
-                "reference": "tags/Smarty_3_1_7/distribution/",
+                "reference": null,
                 "shasum": null
             },
             "type": "library"
