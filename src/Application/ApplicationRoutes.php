@@ -57,6 +57,9 @@ class ApplicationRoutes extends AbstractApplication
             $app->get('.html', AutomaticController::class . ':list')
                 ->setName('automatic/list');
 
+            $app->get('cron.html', AutomaticController::class . ':cron')
+                ->setName('automatic/cron');
+
             $app->map(['GET', 'POST', 'PUT'], '/create.html', AutomaticController::class . ':create')
                 ->setName('automatic/create');
 

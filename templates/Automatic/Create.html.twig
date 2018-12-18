@@ -1,0 +1,37 @@
+{% extends "Default.html.twig" %}
+
+{% block title %}Pages{% endblock %}
+
+{% block content %}
+
+	<h1>New Automatic <a href="{{ path_for('automatic/list') }}" class="btn btn-secondary" data-command="escape">back
+			<kbd>ESC</kbd></a></h1>
+
+	<form action="{{ path_for('automatic/create') }}" method="post">
+		<div class="form-group">
+			<label for="implementation">Implementation</label>
+			<select class="form-control" name="implementation" id="implementation">
+				{% for implementation in implementations %}
+					<option value="{{ implementation.implementation }}">{{ implementation.name }}</option>
+				{% endfor %}
+			</select>
+			<small class="form-text text-muted">Implementation provider that handle the checks.</small>
+		</div>
+		<div class="form-group">
+			<label for="expression">Expression</label>
+			<input type="text" class="form-control" id="expression" name="expression" aria-describedby="expression" placeholder="Expression e.g. '* * * * *' or '@daily'">
+			<small id="expression" class="form-text text-muted">Crontab expression for automatic</small>
+		</div>
+		<div class="form-group">
+			<label for="page">Pages</label> <select class="form-control" name="page" id="page">
+				{% for page in pages %}
+					<option value="{{ page.id }}">{{ page.uri }}</option>
+				{% endfor %}
+			</select>
+			<small class="form-text text-muted">Related page.</small>
+		</div>
+		<button type="submit" class="btn btn-primary" data-command="save">Create <kbd>CTRL + S</kbd></button>
+	</form>
+
+{% endblock %}
+

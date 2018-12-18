@@ -8,6 +8,9 @@ declare(strict_types=1);
 
 namespace PhpWatch\Automatic;
 
+use GuzzleHttp\Client;
+use PhpWatch\Database\DatabaseManager;
+
 /**
  * StaticMetaFiles.
  */
@@ -26,4 +29,50 @@ class StaticMetaFiles extends AbstractAutomatic
         'favicon.ico' => 'Default favicon path',
         'apple-touch-icon.png' => 'Default apple touch icon, if there are no meta information',
     ];
+
+    /**
+     * Get implementation name.
+     *
+     * @return string
+     */
+    public function getName(): string
+    {
+        return 'Static Meta files';
+    }
+
+    /**
+     * Run the service.
+     *
+     * @param int $pageId
+     */
+    public function run(int $pageId)
+    {
+        $page = DatabaseManager::getQuery()
+                    ->select('*')
+                    ->from('pages')
+                    ->where('id = ?')
+                    ->setParameter(0, $pageId)
+                    ->execute()
+                    ->fetchAll()[0];
+
+        foreach ($this->metaFiles as $key => $metaFile) {
+            $testUri = \rtrim($page['uri'], '/') . '/' . $key;
+
+            try {
+                $client = new Client();
+                $res = $client->request('GET', $testUri);
+                if (200 === $res->getStatusCode()) {
+                    continue;
+                }
+                \var_dump($res->getStatusCode());
+            } catch (\Exception $ex) {
+                \var_dump($ex->getMessage());
+            }
+        }
+
+        echo 'Run for ' . $pageId;
+        // Worker!!!
+
+        die();
+    }
 }

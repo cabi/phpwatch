@@ -39,11 +39,20 @@ class Application
             \define('APPLICATION_ROOT', \dirname(__DIR__) . '/');
         }
 
-        if (\preg_match('/\.(?:png|jpg|jpeg|gif|ico|css|js)$/', $_SERVER['REQUEST_URI'])) {
+        $settings = [
+            'settings' => [
+                'displayErrorDetails' => true,
+            ],
+        ];
+
+        self::$application = new App($settings);
+
+        /** @var \Slim\Http\Environment $env */
+        $env = self::$application->getContainer()['environment'];
+
+        if (\preg_match('/\.(?:png|jpg|jpeg|gif|ico|css|js)$/', (string) $env->get('REQUEST_URI'))) {
             return false;
         }
-
-        self::$application = new App();
 
         $applicationMiddleware = new ApplicationMiddleware();
         $applicationMiddleware->add(self::$application);

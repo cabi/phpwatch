@@ -25,7 +25,7 @@ class Twig extends \Slim\Views\Twig
     {
         $isProduction = false;
         $config = [
-            'cache' => $isProduction ? APPLICATION_ROOT . 'var/tmp/view/' : false,
+            'cache' => $isProduction ? APPLICATION_ROOT . 'var/cache/view/' : false,
             'strict_variables' => true,
             'debug' => $isProduction ? false : true,
         ];

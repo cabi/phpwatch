@@ -39,7 +39,7 @@ class GeneralCache
     {
         try {
             if (null === self::$cache) {
-                $config = new ConfigurationOption(['path' => APPLICATION_ROOT . 'var' . \DIRECTORY_SEPARATOR . 'tmp' . \DIRECTORY_SEPARATOR . 'service']);
+                $config = new ConfigurationOption(['path' => APPLICATION_ROOT . 'var' . \DIRECTORY_SEPARATOR . 'cache' . \DIRECTORY_SEPARATOR . 'service']);
                 self::$cache = CacheManager::getInstance('files', $config);
             }
             $item = self::$cache->getItem($identifier);

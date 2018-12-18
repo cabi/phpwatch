@@ -96,6 +96,9 @@
     ],
     "phpwatch:dev:phpdoc": [
       "docker run --rm -v $(pwd):/data phpdoc/phpdoc -d src -t var/phpdoc"
+    ],
+    "phpwatch:cron": [
+      "@php web/index.php"
     ]
   },
   "scripts-descriptions": {
@@ -107,6 +110,7 @@
     "phpwatch:dev:hooks": "Install development hooks for using git in the right way.",
     "phpwatch:dev:php-cs-fixer": "Execute PHP CS fixer to cleanup the current code.",
     "phpwatch:dev:server": "Start a PHP server on port 8087 so you can use the application with http://localhost:8087/.",
-    "phpwatch:dev:phpdoc": "Generate PHPdoc files via docker"
+    "phpwatch:dev:phpdoc": "Generate PHPdoc files via docker",
+    "phpwatch:cron": "Run cron command"
   }
 }
