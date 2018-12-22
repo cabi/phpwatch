@@ -28,7 +28,6 @@ class ApplicationContainer extends AbstractApplication
     public function add(App $app): void
     {
         $container = $app->getContainer();
-        $container['router'] = new Router();
         $container['logger'] = new Logger();
 
         $container['session'] = function (ContainerInterface $container) {

@@ -39,11 +39,6 @@ class UserController extends AbstractController
         if ($request->isPost()) {
             $params = $request->getParams();
 
-            $data = [
-                'email' => $params['email'],
-                'password' => $params['password'],
-            ];
-
             $query = DatabaseManager::getQuery();
 
             $user = $query

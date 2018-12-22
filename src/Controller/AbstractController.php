@@ -19,6 +19,7 @@ use Slim\Http\Response;
  */
 abstract class AbstractController
 {
+
     /**
      * Container.
      *
@@ -59,7 +60,8 @@ abstract class AbstractController
     protected function render(Request $request, Response $response, string $methodName, array $variables = []): ResponseInterface
     {
         $uriPath = \parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-        $type = \pathinfo($uriPath, PATHINFO_EXTENSION);
+        $type = trim((string)\pathinfo($uriPath, PATHINFO_EXTENSION));
+        $type = $type === '' ? 'html' : $type;
         $templateName = $this->getTemplate($methodName, $type);
         if (!\is_file(APPLICATION_ROOT . 'templates' . \DIRECTORY_SEPARATOR . $templateName) && 'html' !== $type) {
             return $response->withRedirect(\str_replace('.' . $type, '.html', $uriPath), 302);

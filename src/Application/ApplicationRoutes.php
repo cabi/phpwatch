@@ -32,65 +32,65 @@ class ApplicationRoutes extends AbstractApplication
         $app->get('/', ContentController::class . ':root')
             ->setName('root');
 
-        $app->get('/home.html', ContentController::class . ':home')
+        $app->get('/home', ContentController::class . ':home')
             ->setName('home');
 
-        $app->get('/about.html', ContentController::class . ':about')
+        $app->get('/about', ContentController::class . ':about')
             ->setName('about');
 
         $app->group('/page', function () use ($app) {
             // @todo Handle CRUD via WEB and Service
             // List
-            $app->get('.html', PageController::class . ':list')
+            $app->get('', PageController::class . ':list')
                 ->setName('page/list');
 
-            $app->map(['GET', 'POST', 'PUT'], '/create.html', PageController::class . ':create')
+            $app->map(['GET', 'POST', 'PUT'], '/create', PageController::class . ':create')
                 ->setName('page/create');
 
             // Delete
-            $app->map(['GET', 'DELETE'], '/{id}.html', PageController::class . ':delete')
+            $app->map(['GET', 'DELETE'], '/{id}', PageController::class . ':delete')
                 ->setName('page/delete');
         });
         $app->group('/automatic', function () use ($app) {
             // @todo Handle CRUD via WEB and Service
             // List
-            $app->get('.html', AutomaticController::class . ':list')
+            $app->get('', AutomaticController::class . ':list')
                 ->setName('automatic/list');
 
-            $app->get('cron.html', AutomaticController::class . ':cron')
+            $app->get('cron', AutomaticController::class . ':cron')
                 ->setName('automatic/cron');
 
-            $app->map(['GET', 'POST', 'PUT'], '/create.html', AutomaticController::class . ':create')
+            $app->map(['GET', 'POST', 'PUT'], '/create', AutomaticController::class . ':create')
                 ->setName('automatic/create');
 
             // Delete
-            $app->map(['GET', 'DELETE'], '/{id}.html', AutomaticController::class . ':delete')
+            $app->map(['GET', 'DELETE'], '/{id}', AutomaticController::class . ':delete')
                 ->setName('automatic/delete');
         });
 
-        $app->map(['GET', 'POST'], '/install.html', InstallController::class . ':index')
+        $app->map(['GET', 'POST'], '/install', InstallController::class . ':index')
             ->setName('install');
 
-        $app->map(['GET', 'POST'], '/login.html', UserController::class . ':login')
+        $app->map(['GET', 'POST'], '/login', UserController::class . ':login')
             ->setName('login');
 
-        $app->map(['GET'], '/logout.html', UserController::class . ':logout')
+        $app->map(['GET'], '/logout', UserController::class . ':logout')
             ->setName('logout');
 
         $app->group('/log', function () use ($app) {
             // @todo Handle CRUD via WEB and Service
             // List
-            $app->get('.html', PageController::class . ':list')
+            $app->get('', PageController::class . ':list')
                 ->setName('page/list');
 
             $app->map(['GET'], '/data[/{area}]', LogController::class . ':data')
                 ->setName('log/data');
 
-            $app->map(['GET', 'POST', 'PUT'], '/create.html', LogController::class . ':create')
+            $app->map(['GET', 'POST', 'PUT'], '/create', LogController::class . ':create')
                 ->setName('log/create');
         });
 
-        $app->get('/log/frontendHandler.html', LogController::class . ':frontendHandler')
+        $app->get('/log/frontendHandler.js', LogController::class . ':frontendHandler')
             ->setName('log/frontendHandler');
 
         // CLI

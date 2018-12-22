@@ -1,0 +1,27 @@
+version: "3"
+services:
+  mailhog:
+    build:
+      context: .
+      dockerfile: config/docker/Dockerfile-mailhog
+    ports:
+      - 8025:8025
+  database:
+    build:
+      context: .
+      dockerfile: config/docker/Dockerfile-mysql
+  http:
+    build:
+      context: .
+      dockerfile: config/docker/Dockerfile-php
+    ports:
+      - 8087:80
+      - 443:443
+    links:
+      - database
+      - mailhog
+    volumes:
+      - .:/app:cached
+      - ~/.ssh/:/root/.ssh/:cached
+    depends_on:
+      - database
