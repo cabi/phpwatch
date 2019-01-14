@@ -10,7 +10,6 @@ namespace PhpWatch\Application;
 
 use Adbar\Session;
 use PhpWatch\Container\Logger;
-use PhpWatch\Container\Router;
 use PhpWatch\View\Twig;
 use Psr\Container\ContainerInterface;
 use Slim\App;
