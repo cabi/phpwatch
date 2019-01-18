@@ -10,6 +10,8 @@ namespace PhpWatch\View;
 
 use Comsolit\HTMLBuilder\HTMLBuilder;
 use GuzzleHttp\Client;
+use Leafo\ScssPhp\Compiler;
+use MatthiasMullie\Minify\CSS;
 use PhpWatch\Cache\GeneralCache;
 use PhpWatch\Time\TimeService;
 use Twig\Extension\AbstractExtension;
@@ -93,6 +95,27 @@ class TwigExtension extends AbstractExtension
                 $builder = new HTMLBuilder('link');
                 $builder->setVoid()
                     ->addAttribute('href', $resource)
+                    ->addAttribute('rel', 'stylesheet');
+                break;
+            case 'scss':
+                $builder = new HTMLBuilder('link');
+
+                $sourceAbsolute = APPLICATION_ROOT . 'web' . $resource;
+                if (!\is_file($sourceAbsolute)) {
+                    break;
+                }
+
+                $targetRelative = '/css/' . $pathInfo['filename'] . '.' . \filemtime($sourceAbsolute) . '.css';
+                $targetAbsolute = APPLICATION_ROOT . 'web' . $targetRelative;
+
+                if (!\is_file($targetAbsolute)) {
+                    $scss = new Compiler();
+                    $minifier = new CSS($scss->compile(\file_get_contents($sourceAbsolute)));
+                    \file_put_contents($targetAbsolute, $minifier->minify());
+                }
+
+                $builder->setVoid()
+                    ->addAttribute('href', $targetRelative)
                     ->addAttribute('rel', 'stylesheet');
                 break;
             default:
