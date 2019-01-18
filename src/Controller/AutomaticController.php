@@ -10,6 +10,7 @@ namespace PhpWatch\Controller;
 
 use Cron\CronExpression;
 use PhpWatch\Automatic\StaticMetaFiles;
+use PhpWatch\Automatic\WeekReport;
 use PhpWatch\Database\DatabaseManager;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Request;
@@ -144,6 +145,7 @@ class AutomaticController extends AbstractController
     {
         return [
             new StaticMetaFiles(),
+            new WeekReport(),
         ];
     }
 }

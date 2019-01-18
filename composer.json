@@ -8,25 +8,27 @@
     }
   ],
   "config": {
-    "optimize-autoloader": true
+    "optimize-autoloader": true,
+    "sort-packages": true
   },
   "require": {
     "php": ">7.0.0",
     "ext-pdo": "*",
-    "jonnyreeves/js-logger": "v1.5.0",
+    "adbario/slim-secure-session-middleware": "^1.3",
+    "comsolit/html-builder": "^1.0",
     "doctrine/dbal": "^2.8",
-    "twig/twig": "^2.5",
+    "doctrine/migrations": "^2.0",
+    "dragonmantank/cron-expression": "^2.2",
+    "guzzlehttp/guzzle": "^6.3",
+    "jonnyreeves/js-logger": "v1.5.0",
+    "monolog/monolog": "^1.23",
+    "nochso/html-compress-twig": "^2.0",
+    "phpfastcache/phpfastcache": "^7.0",
     "slim/slim": "^3.11",
     "slim/twig-view": "^2.4",
-    "adbario/slim-secure-session-middleware": "^1.3",
-    "monolog/monolog": "^1.23",
-    "doctrine/migrations": "^2.0",
+    "swiftmailer/swiftmailer": "^6.1",
     "symfony/yaml": "^4.1",
-    "nochso/html-compress-twig": "^2.0",
-    "comsolit/html-builder": "^1.0",
-    "phpfastcache/phpfastcache": "^7.0",
-    "guzzlehttp/guzzle": "^6.3",
-    "dragonmantank/cron-expression": "^2.2"
+    "twig/twig": "^2.5"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^2.14",

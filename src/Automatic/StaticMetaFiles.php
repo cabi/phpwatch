@@ -48,12 +48,12 @@ class StaticMetaFiles extends AbstractAutomatic
     public function run(int $pageId)
     {
         $page = DatabaseManager::getQuery()
-                    ->select('*')
-                    ->from('pages')
-                    ->where('id = ?')
-                    ->setParameter(0, $pageId)
-                    ->execute()
-                    ->fetchAll()[0];
+            ->select('*')
+            ->from('pages')
+            ->where('id = ?')
+            ->setParameter(0, $pageId)
+            ->execute()
+            ->fetchAll()[0];
 
         foreach ($this->metaFiles as $key => $metaFile) {
             $testUri = \rtrim($page['uri'], '/') . '/' . $key;
@@ -71,8 +71,6 @@ class StaticMetaFiles extends AbstractAutomatic
         }
 
         echo 'Run for ' . $pageId;
-        // Worker!!!
-
         die();
     }
 }

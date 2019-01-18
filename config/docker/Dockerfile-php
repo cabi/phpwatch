@@ -1,3 +1,5 @@
 FROM webdevops/php-apache:7.2
 
 ENV WEB_DOCUMENT_ROOT "/app/web"
+
+#CMD (crontab -l 2>/dev/null; echo "* * * * * composer --working-dir=/app/ phpwatch:cron") | crontab -
