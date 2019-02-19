@@ -56,6 +56,6 @@ class InstallMiddleware
         } catch (\Exception $exception) {
         }
 
-        return $request->getUri()->getPath() !== '/install';
+        return '/install' !== $request->getUri()->getPath();
     }
 }

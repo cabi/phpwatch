@@ -34,7 +34,7 @@
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^2.14",
-    "phpunit/phpunit": "^7"
+    "phpunit/phpunit": "^8"
   },
   "autoload": {
     "psr-4": {
@@ -87,7 +87,7 @@
       "@phpwatch:dev:server"
     ],
     "phpwatch:dev:test": [
-      "@php ./vendor/bin/phpunit --bootstrap vendor/autoload.php tests/"
+      "@php ./vendor/bin/phpunit --cache-result-file=./var/phpunit.result.cache --bootstrap vendor/autoload.php tests/"
     ],
     "phpwatch:dev:hooks": [
       "rm -rf .git/hooks",
