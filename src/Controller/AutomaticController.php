@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace PhpWatch\Controller;
 
 use Cron\CronExpression;
+use PhpWatch\Automatic\SslCertificateStatus;
 use PhpWatch\Automatic\StaticMetaFiles;
 use PhpWatch\Automatic\WeekReport;
 use PhpWatch\Database\DatabaseManager;
@@ -146,6 +147,7 @@ class AutomaticController extends AbstractController
         return [
             new StaticMetaFiles(),
             new WeekReport(),
+            new SslCertificateStatus()
         ];
     }
 }
