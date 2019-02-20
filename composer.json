@@ -14,6 +14,7 @@
   "require": {
     "php": ">7.0.0",
     "ext-pdo": "*",
+    "acmephp/ssl": "^1.1",
     "adbario/slim-secure-session-middleware": "^1.3",
     "comsolit/html-builder": "^1.0",
     "doctrine/dbal": "^2.8",
