@@ -147,7 +147,7 @@ class AutomaticController extends AbstractController
         return [
             new StaticMetaFiles(),
             new WeekReport(),
-            new SslCertificateStatus()
+            new SslCertificateStatus(),
         ];
     }
 }
